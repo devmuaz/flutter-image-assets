@@ -4,7 +4,7 @@ A simple [Visual Studio Code](https://code.visualstudio.com/) extension which he
 
 ## Usage
 
-After installing the extension, you should see a new option has been added yo your context menu when you right click on any folder inside the `Explorer` section named `Flutter Image Assets: Generate`:
+After installing the extension, you should see a new option has been added your context menu when you right click on any folder inside the `Explorer` section named `Flutter Image Assets: Generate`:
 
 <p align='center'>
 	<img
