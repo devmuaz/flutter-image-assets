@@ -2,7 +2,7 @@
   "name": "flutter-image-assets",
   "displayName": "Flutter Image Assets",
   "description": "A simple VS Code extension which helps you generate your image assets in 1x, 2x, and 3x and simply added them to your pubspec.yaml file.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "devmuaz",
   "icon": "assets/icon.png",
   "repository": {
