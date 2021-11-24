@@ -1,0 +1,62 @@
+{
+  "name": "flutter-image-assets",
+  "displayName": "Flutter Image Assets",
+  "description": "A simple VS Code extension which helps you generate your image assets in 1x, 2x, and 3x and simply added them to your pubspec.yaml file.",
+  "version": "0.0.1",
+  "publisher": "devmuaz",
+  "icon": "assets/icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/devmuaz/flutter-image-assets"
+  },
+  "engines": {
+    "vscode": "^1.62.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "Flutter",
+    "Dart",
+    "Image",
+    "Assets",
+    "Generator"
+  ],
+  "activationEvents": [
+    "onCommand:flutter-image-assets.generate"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "flutter-image-assets.generate",
+        "title": "Flutter Image Asset: Generate"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "flutter-image-assets.generate"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint"
+  },
+  "dependencies": {
+    "jimp": "0.16.1"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.62.0",
+    "@types/glob": "^7.1.4",
+    "@types/mocha": "^9.0.0",
+    "@types/node": "14.x",
+    "eslint": "^8.1.0",
+    "glob": "^7.1.7",
+    "mocha": "^9.1.3",
+    "typescript": "^4.4.4",
+    "@vscode/test-electron": "^1.6.2"
+  }
+}
