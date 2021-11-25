@@ -1,37 +1,38 @@
 const fs = require('fs');
+const path = require('path');
 const Jimp = require('jimp');
+
 /**
  * 
- * @param {string} destImagePath 
+ * @param {string} directoryPath 
  * @param {string} imagePath 
  * @param {number} mode 
  * @param {number} scale 
  * @returns 
  */
-const scaleImageToMode = (destImagePath, imagePath, mode, scale = 0.25) => {
-    const fileName = imagePath.substring(imagePath.lastIndexOf('/') + 1, imagePath.length);
-    var path = `${destImagePath}/${fileName}`;
+const scaleImageToMode = (directoryPath, imagePath, mode, scale = 0.25) => {
+    const fileName = path.basename(imagePath);
+    var destinationPath = path.join(directoryPath, fileName);
     if (mode == 1) {
-        scaleImage(path, imagePath, scale);
+        scaleImage(destinationPath, imagePath, scale);
         return;
     }
 
-    path = `/${destImagePath}/${mode}x/`;
-    if (!fs.existsSync(path)) {
-        fs.mkdirSync(path);
+    destinationPath = path.join(directoryPath, `${mode}x`);
+    if (!fs.existsSync(destinationPath)) {
+        fs.mkdirSync(destinationPath);
     }
-    scaleImage(`${path}${fileName}`, imagePath, mode == 2 ? 0.50 : mode == 3 ? 0.75 : scale);
-
+    scaleImage(path.join(destinationPath, fileName), imagePath, mode == 2 ? 0.50 : mode == 3 ? 0.75 : scale);
 };
 
 /**
  * 
- * @param {string} destImagePath 
+ * @param {string} destinationImagePath 
  * @param {string} imagePath 
  * @param {number} scale 
  * @returns 
  */
-const scaleImage = (destImagePath, imagePath, scale) => {
+const scaleImage = (destinationImagePath, imagePath, scale) => {
     return new Promise((resolve, reject) => {
         Jimp.read(imagePath, (error, image) => {
             if (error) {
@@ -39,7 +40,7 @@ const scaleImage = (destImagePath, imagePath, scale) => {
                 console.log(error);
                 throw error;
             }
-            image.scale(scale).write(destImagePath);
+            image.scale(scale).write(destinationImagePath);
             resolve();
         });
     });
